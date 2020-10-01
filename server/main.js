@@ -7,7 +7,6 @@ export default class ElectronApp {
     }
 
     createWindow() {
-        console.log('build window');
         this.window = new electron.BrowserWindow({
             width: 800,
             height: 600,
@@ -15,7 +14,7 @@ export default class ElectronApp {
         });
      
         // Si vous décommentez cette ligne, vous verrez la console de débug Chrome
-        //window.webContents.openDevTools();
+        this.window.webContents.openDevTools();
      
         // Display the homepage of the server
         this.window.loadURL('http://localhost:3000/');
