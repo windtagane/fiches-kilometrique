@@ -1,18 +1,33 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Roles', {
+    await queryInterface.createTable('Vehicules', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      code: {
+      nom: {
         type: Sequelize.STRING
       },
-      libelle: {
+      marque: {
         type: Sequelize.STRING
+      },
+      modele: {
+        type: Sequelize.STRING
+      },
+      puissance: {
+        type: Sequelize.STRING
+      },
+      annee: {
+        type: Sequelize.STRING
+      },
+      immatriculation: {
+        type: Sequelize.STRING
+      },
+      chevaux: {
+        type: Sequelize.INTEGER
       },
       actif: {
         type: Sequelize.BOOLEAN
@@ -28,6 +43,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Roles');
+    await queryInterface.dropTable('Vehicules');
   }
 };

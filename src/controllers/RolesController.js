@@ -3,6 +3,8 @@ import Sequelize from 'sequelize';
 
 //const Roles = require('../models/Roles');
 
+const main_dir = process.cwd();
+
 const sequelize = new Sequelize({
     dialect: "sqlite",
     storage: "database.sqlite3"
@@ -10,16 +12,23 @@ const sequelize = new Sequelize({
 
 export default class RolesController {
 
-    constructor() {}
+    constructor() {
+        this.index = this.index.bind(this);
+    }
 
     index(req, res) {
         const Roles = new RolesModel(sequelize, Sequelize.DataTypes);
-        console.log(Roles.findAll());
+        Roles.findAll()
+            .then(roles => {
+                res.render(main_dir + '/views/roles/index', {
+                    roles: roles
+                });
+            })
     }
-    show() {}
-    create() {}
-    edit() {}
-    update() {}
-    delete() {}
+    show(req, res) {}
+    create(req, res) {}
+    edit(req, res) {}
+    update(req, res) {}
+    delete(req, res) {}
     
 }

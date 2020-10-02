@@ -1,18 +1,33 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Roles', {
+    await queryInterface.createTable('Fiches', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      code: {
-        type: Sequelize.STRING
+      commentaire: {
+        type: Sequelize.TEXT
       },
-      libelle: {
-        type: Sequelize.STRING
+      releveCompteur: {
+        type: Sequelize.INTEGER
+      },
+      kmDepart: {
+        type: Sequelize.INTEGER
+      },
+      kmArrivee: {
+        type: Sequelize.INTEGER
+      },
+      kmParcouru: {
+        type: Sequelize.INTEGER
+      },
+      kmParcouruTotal: {
+        type: Sequelize.INTEGER
+      },
+      indemnite: {
+        type: Sequelize.FLOAT
       },
       actif: {
         type: Sequelize.BOOLEAN
@@ -28,6 +43,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Roles');
+    await queryInterface.dropTable('Fiches');
   }
 };

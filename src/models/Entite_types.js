@@ -1,7 +1,9 @@
 'use strict';
-const { Model } = require('sequelize');
-export default (sequelize, DataTypes) => {
-  class Roles extends Model {
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Entite_types extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,16 +11,16 @@ export default (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      
+      console.log(models);
     }
   };
-  Roles.init({
+  Entite_types.init({
     code: DataTypes.STRING,
     libelle: DataTypes.STRING,
     actif: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: 'Roles',
+    modelName: 'Entite_types',
   });
-  return Roles;
+  return Entite_types;
 };
