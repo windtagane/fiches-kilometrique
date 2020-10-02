@@ -1,0 +1,27 @@
+<%- include('../layouts/header', { headerTitle: "Rôles - Modification" }) %>
+<%- include('../layouts/navbar') %>
+
+<div class="container">
+
+    <div class="card">
+        <form action="<%= `/roles/update/${role.id}` %>" class="form" method="POST">
+            <div class="form-control">
+                <label for="code">Code</label>
+                <input type="text" name="code" value="<%= role.code %>" disabled>
+            </div>
+            <div class="form-control">
+                <label for="libelle">Libelle</label>
+                <input type="text" name="libelle" value="<%= role.libelle %>">
+            </div>
+            <div class="form-control">
+                <label for="actif">Statut</label>
+                <input type="checkbox" name="actif" id="" value="<%= role.actif %>">
+            </div>
+
+            <button class="btn btn-primary" type="submit">Valider</button>
+        </form>
+    </div>
+    
+</div>
+
+<%- include('../layouts/footer') %>

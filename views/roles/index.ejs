@@ -1,15 +1,37 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rôles</title>
-</head>
-<body>
+<%- include('../layouts/header', { headerTitle: "Rôles" }) %>
+<%- include('../layouts/navbar') %>
+<div class="container">
+    <table class="table table-dark">
+    <thead>
+        <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Libelle</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% roles.forEach((role => { %>
+            <tr>
+                <td>
+                    <%= role.code %>
+                </td>
+                <td>
+                    <%= role.libelle %>
+                </td>
+                <td>
+                    <%= role.actif %>
+                </td>
+                <td>
+                    <div class="row">
+                        <a class="btn mr-1 btn-primary" href="<%= `roles/edit/${role.id}` %>">Modifier</a>
+                        <a class="btn btn-primary" href="<%= `roles/switchstatus/${role.id}` %>">Activer/Désactiver</a>
+                    </div>
+                </td>
+            </tr>
+            <% })) %>
+    </tbody>
+    </table>
+</div>
 
-    <% roles.forEach((role => { %>
-        <%= role.code %>
-    <% })) %>
-    
-</body>
-</html>
+<%- include('../layouts/footer') %>

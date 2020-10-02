@@ -6,7 +6,7 @@
     "build": "npm-run-all clean transpile",
     "start-electron": "electron ./dist/server/bin/www.js",
     "start-electron-dev": "electromon ./dist/server/bin/www.js",
-    "dev": "npm-run-all build start-electron",
+    "dev": "npm-run-all build start-electron-dev",
     "prod": "NODE_ENV=production npm-run-all build server",
     "transpile-server": "babel ./server --out-dir dist/server",
     "transpile-src": "babel ./src --out-dir dist/src",

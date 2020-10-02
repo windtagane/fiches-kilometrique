@@ -1,5 +1,6 @@
 'use strict';
 const { Model } = require('sequelize');
+
 export default (sequelize, DataTypes) => {
   class Roles extends Model {
     /**
