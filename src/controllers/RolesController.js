@@ -1,5 +1,6 @@
 import RolesModel from '../models/Roles';
 import Sequelize from 'sequelize';
+import Shortcut from '../shortcuts/shortcuts';
 
 const sequelize = new Sequelize({
     dialect: "sqlite",
@@ -8,6 +9,7 @@ const sequelize = new Sequelize({
 
 const main_dir = process.cwd();
 const Roles = new RolesModel(sequelize, Sequelize.DataTypes);
+const shortcut = new Shortcut();
 
 export default class RolesController {
 
@@ -19,8 +21,26 @@ export default class RolesController {
 
         Roles.findAll()
             .then(roles => {
-                res.render(main_dir + '/views/roles/index', {
-                    roles: roles
+                
+                const countRoles = shortcut.countArray(roles);
+
+                if (countRoles.result === true) {
+                    res.render(main_dir + '/views/roles/index', {
+                        roles: roles,
+                        found: countRoles.count + " résultat(s)"
+                    });
+                }
+
+                if (countRoles.result === false) {
+                    res.render(main_dir + '/views/roles/index', {
+                        roles: {},
+                        found: "Aucun résultat"
+                    });
+                }
+            })
+            .catch(error => {
+                res.render(main_dir + '/views/error.ejs', {
+                    error: error
                 });
             })
 

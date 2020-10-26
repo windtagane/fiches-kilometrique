@@ -13,13 +13,12 @@ export default class ElectronApp {
             frame: true
         });
      
-        // Si vous décommentez cette ligne, vous verrez la console de débug Chrome
+        // Debug console
         //this.window.webContents.openDevTools();
      
-        // Display the homepage of the server
+        // Server Homepage
         this.window.loadURL('http://localhost:3000/');
      
-        // Lorsque la fenêtre est fermée, on l'indique au système
         this.window.on('closed', () => {
             this.window = null;
         });

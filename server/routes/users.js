@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express';
+import UsersController from '../../src/controllers/UsersController';
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const router = express.Router();
+const usersController = new UsersController();
 
-module.exports = router;
+router.get('/', usersController.index.bind(usersController));
+router.get('/add', usersController.add.bind(usersController));
+router.post('/create', usersController.create.bind(usersController));
+router.get('/edit/:id', usersController.edit.bind(usersController));
+router.post('/update/:id', usersController.update.bind(usersController));
+
+export default router;
+

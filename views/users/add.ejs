@@ -1,0 +1,33 @@
+<%- include('../layouts/header', { headerTitle: "Créer un utilisateur" }) %>
+<%- include('../layouts/navbar') %>
+
+<div class="container">
+    <div class="card">
+        <form action="<%= `/users/create` %>" class="form" method="POST">
+            <div class="form-control">
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" value="">
+            </div>
+            <div class="form-control">
+                <label for="prenom">Prénom</label>
+                <input type="text" name="prenom" value="">
+            </div>
+            <div class="form-control">
+                <label for="actif">Statut</label>
+                <input type="checkbox" name="actif" id="" value="" checked>
+            </div>
+            <div class="form-control">
+                <label for="role">Rôle</label>
+                <select name="role" id="">
+                    <% roles.forEach(role => {%>
+                    <option value="<%= role.id %>"><%= role.libelle %></option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Valider</button>
+        </form>
+    </div>
+</div>
+
+<%- include('../layouts/footer') %>
